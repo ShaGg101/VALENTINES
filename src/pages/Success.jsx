@@ -1,7 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import PageBackground from '../components/PageBackground';
 import HeartIcon from '../components/HeartIcon';
-import Polaroid, { PhotoPlaceholder } from '../components/Polaroid';
 import Confetti from '../components/Confetti';
 import Button from '../ui/Button';
 
@@ -13,6 +12,9 @@ import Button from '../ui/Button';
  */
 export default function Success({ config, onBack }) {
   const [showConfetti, setShowConfetti] = useState(false);
+  const [heartClicks, setHeartClicks] = useState(0);
+  const [isPulsing, setIsPulsing] = useState(false);
+  const videoRef = useRef(null);
 
   // Trigger confetti on mount
   useEffect(() => {
@@ -22,8 +24,23 @@ export default function Success({ config, onBack }) {
     return () => clearTimeout(timer);
   }, []);
 
-  // Photo rotations for the collage
-  const rotations = ['rotate-2', '-rotate-1', '-rotate-2', 'rotate-1'];
+  const handleHeartClick = () => {
+    if (heartClicks < 14) {
+      setHeartClicks(prev => prev + 1);
+      setIsPulsing(true);
+      setTimeout(() => setIsPulsing(false), 300);
+    }
+  };
+
+  const progress = (heartClicks / 14) * 100;
+  const isComplete = heartClicks >= 14;
+
+  // Ensure video is paused when it first appears (avoid autoplay)
+  useEffect(() => {
+    if (isComplete && videoRef.current) {
+      try { videoRef.current.pause(); videoRef.current.currentTime = 0; } catch (e) { /* ignore */ }
+    }
+  }, [isComplete]);
 
   return (
     <PageBackground className="animate-slide-up">
@@ -126,38 +143,38 @@ export default function Success({ config, onBack }) {
         })}
       </div>
 
-      {/* Photo collage */}
-      <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-8 max-w-xs sm:max-w-sm px-4">
-        {config.gallery_photos.map((photo, index) => (
-          <Polaroid 
-            key={index} 
-            variant="mini" 
-            rotation={rotations[index]}
-          >
-            <div 
-              className="aspect-square w-full rounded relative"
-              style={{
-                background: `linear-gradient(135deg, 
-                  ${index % 2 === 0 ? 'var(--color-secondary)' : 'var(--color-background)'} 0%, 
-                  ${index % 2 === 0 ? 'var(--color-background)' : 'var(--color-secondary)'} 100%)`,
-              }}
+      {/* Easter egg: small, subtle red heart (looks non-interactive) */}
+      <div className="mb-8 px-4 flex flex-col items-center">
+        {!isComplete ? (
+          <div className="flex items-center justify-center">
+            <div
+              onClick={handleHeartClick}
+              onTouchStart={handleHeartClick}
+              role="button"
+              aria-label="Hidden heart easter egg"
+              className="select-none"
+              style={{ cursor: 'default', userSelect: 'none' }}
             >
-              {photo ? (
-                <img 
-                  src={photo} 
-                  alt={`Memory ${index + 1}`} 
-                  className="w-full h-full object-cover rounded"
-                />
-              ) : (
-                <div className="h-full flex items-center justify-center">
-                  <PhotoPlaceholder size="mini" />
-                </div>
-              )}
+              <HeartIcon size={20} color={'#E57373'} />
             </div>
-          </Polaroid>
-        ))}
+          </div>
+        ) : (
+          <div className="animate-slide-up max-w-2xl w-full">
+            <video
+              ref={videoRef}
+              src="/photos/vid.MOV"
+              controls
+              preload="metadata"
+              className="w-full rounded-2xl shadow-2xl"
+              style={{ maxHeight: '70vh' }}
+            >
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        )}
       </div>
 
+      
       {/* Date details card */}
       <div 
         className="text-center mb-8 px-6 py-4 rounded-2xl"

@@ -36,7 +36,7 @@ Thank you for being you, and for giving me a million reasons to smile every sing
   // === PHOTOS ===
   // Add your photo URLs here (can be local paths in /public folder or URLs)
   // Example: "/photos/us.jpg" or "https://example.com/photo.jpg"
-  main_photo: null, // Photo for the invitation page polaroid
+  main_photo: "/photos/1.jpg", // Photo for the invitation page polaroid
   gallery_photos: [null, null, null, null], // 4 photos for the success page collage
 
   // === CONFETTI SETTINGS ===
