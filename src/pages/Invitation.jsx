@@ -333,7 +333,7 @@ export default function Invitation({
         {hintText}
       </p>
 
-      {/* Back button */}
+      {/* Back button 
         <Button
           variant="ghost"
           onClick={onBack}
@@ -342,6 +342,7 @@ export default function Invitation({
         >
           ← Read Letter Again
         </Button>
+        */}
       </div>
     </PageBackground>
   );
