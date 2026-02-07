@@ -4,12 +4,12 @@ A beautiful, interactive Valentine's Day website built with React + Vite + Tailw
 
 ## Features
 
-- 💌 **Love Letter Page** – A heartfelt message with elegant typography
-- 💝 **Valentine Question** – "Will you be my Valentine?" with a dodging "No" button
-- 🎉 **Success Celebration** – Confetti, photos, and date details
-- 📱 **Mobile Responsive** – Works beautifully on phones and tablets
-- 🎨 **Fully Customizable** – Edit colors, text, photos easily
-- ♿ **Accessible** – Keyboard navigation and screen reader friendly
+- **Love Letter Page** – A heartfelt message with elegant typography
+- **Valentine Question** – "Will you be my Valentine?" with a dodging "No" button
+-  **Success Celebration** – Confetti, photos, and date details
+-  **Mobile Responsive** – Works beautifully on phones and tablets
+-  **Fully Customizable** – Edit colors, text, photos easily
+-  **Accessible** – Keyboard navigation and screen reader friendly
 
 ## Quick Start
 
@@ -42,7 +42,7 @@ Edit the configuration in `src/context/ConfigContext.jsx`:
 ### Text Content
 ```javascript
 love_letter: "Your custom love letter...",
-letter_signature: "Forever yours 💕",
+letter_signature: "Forever yours ",
 main_question: "Will you be my Valentine?",
 success_message: "SAVE THE DATE, BABY!",
 date_details: "February 14th, 7PM",
@@ -110,4 +110,4 @@ npm run build
 
 ## License
 
-Made with 💕 for your special someone!
+
