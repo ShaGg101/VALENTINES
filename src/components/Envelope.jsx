@@ -108,7 +108,7 @@ export default function Envelope({ onOpen, isOpening }) {
           className="font-sans-soft text-sm uppercase tracking-wide mb-2"
           style={{ color: '#8B2635' }}
         >
-          {isOpening ? 'Opening...' : 'Click to open'}
+          {isOpening ? 'Opening...' : ' to open'}
         </p>
         <div className="flex justify-center gap-1">
           <HeartIcon size={12} className="animate-pulse-heart" style={{ animationDelay: '0s', color: '#8B2635' }} />
