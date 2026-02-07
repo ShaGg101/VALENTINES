@@ -3,8 +3,13 @@ import { createContext, useContext, useState, useCallback } from 'react';
 // Default configuration - edit these values to customize your Valentine's message!
 export const defaultConfig = {
   // === LOVE LETTER PAGE ===
-  love_letter: "Every moment with you feels like a dream I never want to wake up from. Your smile brightens my darkest days, and your laugh is my favorite sound in the world. I'm so grateful for everything you are and everything we share together. These feelings grow stronger every single day.",
-  letter_signature: "Forever yours ",
+  love_letter: `I’ve been thinking a lot lately about how much you’ve changed my world since the day we met. I realized that there wasn’t a single day where I wasn't smiling simply because you are in my life. You have this way of making everything brighter just by being there.
+Whenever we are together, I find myself wishing I had the power to make time stop. It feels like the hours turn into seconds when I’m with you, and I’m always left wishing for just a few more minutes, another hour, or a whole lifetime more in that exact moment.
+You are the person I’ve always dreamed of and seeing you right in front of me feels like a dream I never have to wake up from. I want you to know how deeply love you and how much I treasure every second we spend side by side.
+Thank you for being you, and for giving me a million reasons to smile every single day.
+`,
+  letter_signature: "Forever yours",
+  letter_name: "- Kervey",
   next_button_text: "Continue Reading",
 
   // === INVITATION PAGE ===
@@ -16,8 +21,8 @@ export const defaultConfig = {
   // === SUCCESS PAGE ===
   success_message: "SAVE THE DATE, LOVE!",
   love_message: "I LOVE YOU!",
-  code_message: "When I'm with you, the world feels like a better place. I can't wait to create more beautiful memories together. ",
-  date_details: "February 14th, 2PM",
+  code_message: "I’m so excited for all the beautiful things we have yet to experience together. Thank you for being my dream come true.",
+  date_details: "Don't be late!",
   final_message: "I can't wait for our date! ",
 
   // === THEME COLORS ===

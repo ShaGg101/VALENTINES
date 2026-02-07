@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import PageBackground from '../components/PageBackground';
 import HeartIcon from '../components/HeartIcon';
 import Button from '../ui/Button';
+import Envelope from '../components/Envelope';
 
 /**
  * Love Letter page - first page showing the heartfelt message
@@ -9,6 +11,39 @@ import Button from '../ui/Button';
  * @param {function} props.onContinue - Handler for continue button
  */
 export default function LoveLetter({ config, onContinue }) {
+  const [showEnvelope, setShowEnvelope] = useState(true);
+  const [isOpening, setIsOpening] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  const handleEnvelopeClick = () => {
+    setIsOpening(true);
+    // Wait for animation to complete before revealing letter
+    setTimeout(() => {
+      setShowEnvelope(false);
+    }, 700);
+  };
+
+  const handleContinue = () => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    // Play letter-out animation then navigate
+    setTimeout(() => {
+      onContinue();
+    }, 620);
+  };
+
+  // Show envelope first
+  if (showEnvelope) {
+    return (
+      <PageBackground>
+        <div className="flex flex-col items-center justify-center min-h-[70vh] animate-slide-up">
+          <Envelope onOpen={handleEnvelopeClick} isOpening={isOpening} />
+        </div>
+      </PageBackground>
+    );
+  }
+
+  // Show letter after envelope opens
   return (
     <PageBackground>
       {/* Top decorative pulsing hearts */}
@@ -32,7 +67,7 @@ export default function LoveLetter({ config, onContinue }) {
 
       {/* Love letter card */}
       <div 
-        className="animate-slide-in max-w-md px-6 sm:px-8 py-10 sm:py-12 rounded-3xl shadow-2xl mx-4"
+        className={`animate-slide-in max-w-md px-6 sm:px-8 py-10 sm:py-12 rounded-3xl shadow-2xl mx-4 ${isTransitioning ? 'animate-letter-out' : ''}`}
         style={{
           backgroundColor: 'var(--color-surface)',
           border: '2px solid color-mix(in srgb, var(--color-secondary) 40%, transparent)',
@@ -59,6 +94,8 @@ export default function LoveLetter({ config, onContinue }) {
             style={{ color: 'color-mix(in srgb, var(--color-foreground) 60%, transparent)' }}
           >
             {config.letter_signature}
+            <br />
+            {config.letter_name}
           </p>
         </div>
       </div>
@@ -66,11 +103,12 @@ export default function LoveLetter({ config, onContinue }) {
       {/* Continue button */}
       <Button
         variant="primary"
-        onClick={onContinue}
+        onClick={handleContinue}
         ariaLabel="Continue to valentine question"
         className="mt-10 sm:mt-12"
+        disabled={isTransitioning}
       >
-        {config.next_button_text} →
+        {isTransitioning ? 'Sending...' : `${config.next_button_text} →`}
       </Button>
 
       {/* Bottom decorative hearts */}

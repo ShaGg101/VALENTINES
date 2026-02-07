@@ -26,7 +26,11 @@
   --animate-confetti: confetti 2s ease-out forwards;
   --animate-slide-up: slideUp 0.8s ease-out;
   --animate-slide-in: slideIn 0.8s ease-out;
-}
+  --animate-flip-paper: flipPaper 0.8s ease-in-out forwards;
+  --animate-flip-paper-back: flipPaperBack 0.8s ease-in-out forwards;
+  --animate-envelope-open: envelopeOpen 0.7s ease-out forwards;
+  --animate-letter-out: letterOut 0.6s ease-in-out forwards;
+} 
 
 /* ============================================
    KEYFRAME ANIMATIONS
@@ -76,6 +80,28 @@
 @keyframes slideIn {
   from { transform: translateX(-30px); opacity: 0; }
   to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes flipPaper {
+  0% { transform: rotateY(0deg); }
+  100% { transform: rotateY(180deg); }
+}
+
+@keyframes flipPaperBack {
+  0% { transform: rotateY(-180deg); }
+  100% { transform: rotateY(0deg); }
+}
+
+@keyframes envelopeOpen {
+  0% { transform: rotateX(0deg); }
+  70% { transform: rotateX(-120deg); }
+  100% { transform: rotateX(-140deg) translateY(-8px); }
+}
+
+@keyframes letterOut {
+  0% { opacity: 1; transform: translateY(0) scale(1) rotateX(0deg); }
+  50% { opacity: 0.85; transform: translateY(-20px) scale(0.98) rotateX(6deg); }
+  100% { opacity: 0; transform: translateY(-40px) scale(0.95) rotateX(8deg); }
 }
 
 /* ============================================

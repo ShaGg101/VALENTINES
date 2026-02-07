@@ -65,7 +65,7 @@ export default function Success({ config, onBack }) {
         className="font-serif-elegant text-xl sm:text-2xl md:text-3xl text-center mb-8"
         style={{ color: 'var(--color-foreground)' }}
       >
-        {config.love_message} 💕
+        {config.love_message}
       </h2>
 
       {/* Cute celebration GIFs (use tenor embeds for reliable media rendering) */}
@@ -92,7 +92,7 @@ export default function Success({ config, onBack }) {
                 title={`celebration-gif-${idx}`}
                 src={embedSrc}
                 className="w-full h-40 sm:h-48"
-                style={{ border: '0', display: 'block', pointerEvents: 'none' }}
+                style={{ border: '0', display: 'block', pointerEvents: 'none', background: 'transparent' }}
                 loading="lazy"
                 sandbox="allow-scripts allow-same-origin allow-popups"
                 tabIndex={-1}
@@ -106,7 +106,7 @@ export default function Success({ config, onBack }) {
                 alt="Happy cat celebrating love"
                 className="w-full h-40 sm:h-48 object-cover"
                 loading="lazy"
-                style={{ pointerEvents: 'none' }}
+                style={{ pointerEvents: 'none', background: 'transparent' }}
                 draggable={false}
                 tabIndex={-1}
                 aria-hidden="true"
@@ -117,7 +117,8 @@ export default function Success({ config, onBack }) {
           return (
             <div
               key={idx}
-              className="overflow-hidden rounded-2xl shadow-lg bg-surface border border-secondary/40"
+              className="overflow-hidden rounded-2xl bg-transparent border-0 shadow-none"
+              style={{ background: 'transparent' }}
             >
               {content}
             </div>
@@ -199,9 +200,8 @@ export default function Success({ config, onBack }) {
         >
           {config.final_message}
         </p>
-      </div>
 
-      {/* Back button */}
+      {/* Back button 
       <Button
         variant="ghost"
         onClick={onBack}
@@ -210,6 +210,8 @@ export default function Success({ config, onBack }) {
       >
         ← Go Back
       </Button>
+      */}
+      </div>
     </PageBackground>
   );
 }
