@@ -92,9 +92,11 @@ export default function Success({ config, onBack }) {
                 title={`celebration-gif-${idx}`}
                 src={embedSrc}
                 className="w-full h-40 sm:h-48"
-                style={{ border: '0', display: 'block' }}
+                style={{ border: '0', display: 'block', pointerEvents: 'none' }}
                 loading="lazy"
                 sandbox="allow-scripts allow-same-origin allow-popups"
+                tabIndex={-1}
+                aria-hidden="true"
               />
             );
           } else {
@@ -104,6 +106,10 @@ export default function Success({ config, onBack }) {
                 alt="Happy cat celebrating love"
                 className="w-full h-40 sm:h-48 object-cover"
                 loading="lazy"
+                style={{ pointerEvents: 'none' }}
+                draggable={false}
+                tabIndex={-1}
+                aria-hidden="true"
               />
             );
           }

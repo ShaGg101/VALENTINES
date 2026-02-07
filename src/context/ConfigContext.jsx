@@ -4,21 +4,21 @@ import { createContext, useContext, useState, useCallback } from 'react';
 export const defaultConfig = {
   // === LOVE LETTER PAGE ===
   love_letter: "Every moment with you feels like a dream I never want to wake up from. Your smile brightens my darkest days, and your laugh is my favorite sound in the world. I'm so grateful for everything you are and everything we share together. These feelings grow stronger every single day.",
-  letter_signature: "Forever yours 💕",
+  letter_signature: "Forever yours ",
   next_button_text: "Continue Reading",
 
   // === INVITATION PAGE ===
   main_question: "Will you be my Valentine?",
-  polaroid_caption: "Us 💕",
-  yes_button_text: "Yes! 💖",
+  polaroid_caption: "Us ",
+  yes_button_text: "Yes! ",
   no_button_text: "No",
 
   // === SUCCESS PAGE ===
-  success_message: "SAVE THE DATE, BABY!",
+  success_message: "SAVE THE DATE, LOVE!",
   love_message: "I LOVE YOU!",
-  code_message: "while (me.with(you)) { happiness = true; love = Infinity; }",
-  date_details: "February 14th, 7PM",
-  final_message: "I can't wait for our date! 💕",
+  code_message: "When I'm with you, the world feels like a better place. I can't wait to create more beautiful memories together. ",
+  date_details: "February 14th, 2PM",
+  final_message: "I can't wait for our date! ",
 
   // === THEME COLORS ===
   // Change these to customize the color scheme
