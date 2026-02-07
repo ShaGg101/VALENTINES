@@ -27,6 +27,18 @@ npm run build
 npm run preview -- --host
 ```
 
+## Environment variables
+
+This project uses Vite. Client-side environment variables must be prefixed with `VITE_`.
+
+- Copy `.env.example` to `.env` and update values for your environment.
+- Example variables are:
+  - `VITE_APP_TITLE` (string)
+  - `VITE_API_URL` (string)
+  - `VITE_FEATURE_HEART_EASTER_EGG` (true/false)
+
+**Security:** Do not commit your `.env` file (it's ignored by `.gitignore`). For production builds, provide environment variables via your hosting provider (Netlify, Vercel, etc.).
+
 ## 📱 Access from Phone
 
 1. Run `npm run dev -- --host`
